@@ -23,18 +23,22 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Task_03 {
 	class Program {
 		static void Main(string[] args) {
 			// TODO : Сменить локаль для ввода чисел с плавующей точкой.
+			Thread.CurrentThread.CurrentCulture = new CultureInfo("ru-RU");
 
 			double x, y;
 			// TODO : Считать координаты точки.
-
+			x = double.Parse(Console.ReadLine());
+			y = double.Parse(Console.ReadLine());
 
 			Console.WriteLine(G(x,y));
 
@@ -44,7 +48,7 @@ namespace Task_03 {
 			bool res = false;
 
 			// TODO : Реализовать вычисление функции G.
-
+			res = (x * x + y * y <= 4) && (x >= 0) && (y <= x) ? true : false;
 			return res;
 		}
 	}

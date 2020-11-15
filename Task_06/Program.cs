@@ -30,13 +30,33 @@ namespace Task_06 {
 	class Program {
 
 		static void Main(string[] args) {
-			int answer = 0;
+			int fl = 10;
+			int ka = 100;
 
 			foreach (int level in GetNumbers()) {
 				// TODO : Обработать информацию об очередном этаже. Он лежит в переменной level.
+				int floor = level / 100;
+				int kab = level % 100;
+				if (kab < ka)
+                {
+					ka = kab;
+					fl = floor;
+                }
+				else if(ka == kab)
+                {
+					if(floor < fl)
+                    {
+						ka = kab;
+						fl = floor;
+					}
+                }
+				
 			}
 
-			// TODO : Вывести получееный этаж.
+			int answer = fl * 100 + ka;
+
+            // TODO : Вывести получееный этаж.
+            Console.WriteLine(answer);
 		}
 
 		public static List<int> GetNumbers() {

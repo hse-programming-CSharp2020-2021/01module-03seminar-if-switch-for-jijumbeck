@@ -28,12 +28,29 @@ namespace Task_02 {
 		static void Main(string[] args) {
 			int x;
 			// TODO : Ввести X.
+			x = int.Parse(Console.ReadLine());
 
 			Console.WriteLine(Reverse(x));
 		}
 
 		public static int Reverse(int x) {
-			// TODO : Описать логику метода для получения нового числа.
-		}
+            // TODO : Описать логику метода для получения нового числа.
+            int countOfDigits = $"{x}".Length;
+            int[] digits = new int[countOfDigits];
+            for (int i = 0; i < countOfDigits; i++)
+            {
+                digits[i] = x % 10;
+                x /= 10;
+            }
+            int number = 1;
+            int result = 0;
+            for (int i = 0; i < countOfDigits; i++)
+            {
+                result += digits[countOfDigits - 1 - i] * number;
+                number *= 10;
+            }
+            return result;
+
+        }
 	}
 }

@@ -26,26 +26,61 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task_01 {
-	class Program {
-		static void Main(string[] args) {
-			int l;
-			// TODO : Считать l;
+namespace Task_01
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int l;
+            // TODO : Считать l;
+            l = int.Parse(Console.ReadLine());
+            int result = CalcS(l);
 
-			int result = CalcS(l);
+            // TODO : вывести результат или 0, если его не было получено.
+            if (result < 0)
+            {
+                Console.WriteLine(0);
+            }
+            else
+            {
+                Console.WriteLine(result);
+            }
+        }
 
-			// TODO : вывести результат или 0, если его не было получено.
-		}
+        public static int CalcS(int l)
+        {
+            int res = -1;
+            res = l;
+            int i = 1;
+            // TODO : Написать логику для метода вычисления S и 
+            // если вычислить удалось, поместить в res полученное S.
 
-		public static int CalcS(int l) {
-			int res = -1;
+            while (res < 1000 || !CheckNumber(l))
+            {
+                if(res > 10000)
+                {
+                    break;
+                }
+                res += l + i++;
+            }
 
-			// TODO : Написать логику для метода вычисления S и 
-			// если вычислить удалось, поместить в res полученное S.
+            if (CheckNumber(res))
+            {
+                return res;
+            }
+            return -1;
+        }
 
-			return res;
-		}
-
-
-	}
+        public static bool CheckNumber(int x)
+        {
+            bool check = true;
+            while (check && x > 10)
+            {
+                check &= ((x % 100) / 10) == x % 10;
+                x /= 10;
+            }
+            return check;
+        }
+    }
 }
